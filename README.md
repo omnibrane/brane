@@ -1,23 +1,6 @@
-
-# go-algorand
-| **Branch**      | **Build Status** |
-| --------------- | ---------------- |
-| **rel/stable**  | [![Nightly Tests](https://github.com/algorand/go-algorand/actions/workflows/ci-nightly.yml/badge.svg?branch=rel%2Fstable)](https://github.com/algorand/go-algorand/actions/workflows/ci-nightly.yml) |
-| **rel/beta**    | [![Nightly Tests](https://github.com/algorand/go-algorand/actions/workflows/ci-nightly.yml/badge.svg?branch=rel%2Fbeta)](https://github.com/algorand/go-algorand/actions/workflows/ci-nightly.yml) |
-| **rel/nightly** | [![Nightly Tests](https://github.com/algorand/go-algorand/actions/workflows/ci-nightly.yml/badge.svg?branch=rel%2Fnightly)](https://github.com/algorand/go-algorand/actions/workflows/ci-nightly.yml) |
-
-
-**Algorand's** official implementation in Go.
-
-Algorand is a permissionless, pure proof-of-stake blockchain that delivers decentralization, scalability, security, and transaction finality.
-
-## Getting Started
-
-Visit our [developer website](https://dev.algorand.co/) for the most up-to-date information about using and installing the Algorand platform.
-
 ## Building from Source
 
-Development is done using the Go Programming Language. The Go version is specified in the project's [go.mod](go.mod) file. This document assumes you have a functioning environment set up. If you need assistance setting up an environment, please visit the [official Go documentation website](https://golang.org/doc/).
+Development is done using the Go Programming Language. The Go version is specified in the project's [go.mod](go.mod) file. This document assumes you have a functioning environment set up.
 
 ### Linux / OSX
 
@@ -80,7 +63,6 @@ Use:
 ${GOPATH}/bin/carpenter -d ~/.algorand
 ```
 
-to see activity. Refer to the [developer website](https://developer.algorand.org/) for instructions on using different tools.
 
 ### Providing Your Own Data Directory
 
@@ -121,49 +103,3 @@ Provides core functionality to the `algod` and `kmd` daemons, as well as other t
   - **rpcs**: Contains the HTTP RPCs used by `algod` processes to query one another.
 - **agreement** ([README](agreement/README.md)): Contains the agreement service, which implements Algorand's Byzantine Agreement protocol. This protocol allows participating accounts to quickly confirm blocks in a fork-safe manner, provided that sufficient account stake is correctly executing the protocol.
 - **node**: Integrates the components above and handles initialization and shutdown. It provides queries into these components.
-
-### Daemon
-
-Contains the two daemons that provide Algorand clients with services:
-
-- **daemon/algod**: Holds the `algod` daemon, which implements a participating node. `algod` allows a node to participate in the agreement protocol, submit and confirm transactions, and view the state of the Algorand Ledger.
-  - **daemon/algod/api** ([README](daemon/algod/api/README.md)): The REST interface used for interactions with `algod`.
-- **daemon/kmd** ([README](daemon/kmd/README.md)): Holds the `kmd` daemon, which allows a node to sign transactions. Since `kmd` is separate from `algod`, it enables a user to sign transactions on an air-gapped computer.
-
-### Interfacing
-
-Enables developers to interface with the Algorand system:
-
-- **cmd**: Contains the primary commands defining entry points into the system.
-- **libgoal**: Exports a Go interface useful for developers of Algorand clients.
-- **tools** ([README](tools/README.md)): Various tools and utilities that don’t have a better place to go.
-- **tools/debug**: Holds secondary commands that assist developers during debugging.
-- **tools/misc** ([README](tools/misc/README.md)): Small tools that are handy in a pinch.
-
-### Deployment
-
-Helps Algorand developers deploy networks of their own:
-
-- **nodecontrol**
-- **docker**
-- **netdeploy**
-
-### Utilities
-
-Provides utilities for the various components:
-
-- **logging**: A wrapper around `logrus`.
-- **util**: Contains a variety of utilities, including a codec, a SQLite wrapper, a goroutine pool, a timer interface, node metrics, and more.
-
-### Test
-
-- **test** ([README](test/README.md)): Contains end-to-end tests and utilities for the above components.
-
-## License
-
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](COPYING)
-
-Please see the [COPYING_FAQ](COPYING_FAQ) for details on how to apply our license.
-
-Copyright (C) 2019-2025, Algorand Inc.
-
